@@ -22,9 +22,21 @@ app.get('/', (req, res) => {('index');
 	res.render('index');
 });
 
+app.get('/detyra', (req, res) => {
+	let idNxenes = req.body.username;
+
+	Detyrat.find({"nxenesit" : idNxenes}).exec( (err, detyra) => {
+		res.render('detyra_nxenesi', {
+			detyrat: detyra
+		});
+	});
+
+});
+
 app.post('/mesuesDashboard', (req, res) => {
-	let emerMesues = req.body.username;
-	Detyrat.find({"mesues" : emerMesues}).exec(function(err, detyra){
+	let idMesues = req.body.username;
+
+	Detyrat.find({"mesues" : idMesues}).exec(function(err, detyra){
 		res.render('mesuesDashboard', {
 			detyrat: detyra
 		})
