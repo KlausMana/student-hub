@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const mg = require('mongoose');
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 
 mg.Promise = global.Promise;
@@ -14,11 +15,10 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (req, res) => {
-	res.send('Hello World');
+	res.render('index');
 });
 
 port = 1234;
 app.listen(port, () => {
-	console.log('Finished Loading, Port: ' + port);
 });
 

@@ -1,1 +1,0 @@
-const mg = require('mongoose');
