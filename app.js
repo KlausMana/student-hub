@@ -14,6 +14,7 @@ mg.connect(db);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
+app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -22,26 +23,19 @@ app.get('/', (req, res) => {('index');
 	res.render('index');
 });
 
-app.get('/detyra', (req, res) => {
-	let idNxenes = req.body.username;
-
-	Detyrat.find({"nxenesit" : idNxenes}).exec( (err, detyra) => {
-		res.render('detyra_nxenesi', {
-			detyrat: detyra
-		});
-	});
-
+app.get('/loginMesues', (req, res) => {
+	res.render('loginMesues');
 });
 
 app.post('/mesuesDashboard', (req, res) => {
-	let idMesues = req.body.username;
-
-	Detyrat.find({"mesues" : idMesues}).exec(function(err, detyra){
-		res.render('mesuesDashboard', {
+	let emerMesues = req.body.username;
+	Detyrat.find({"mesues" : emerMesues}).exec(function(err, detyra){
+		res.render('detyra_mesuesi', {
 			detyrat: detyra
-		})
+		});
 	});
 });
+
 
 port = 1234;
 app.listen(port, () => {
