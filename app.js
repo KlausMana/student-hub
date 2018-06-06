@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const db = 'mongodb://studenthub:abc123@ds147390.mlab.com:47390/studenthub';
 const Detyrat = require('./schemas/Detyra.model');
+const Plotesim = require('./schemas/Plotesim.Model');
 
 
 
@@ -63,10 +64,29 @@ app.post('/detyraSukses', (req, res) => {
 	const Detyra = {
 		emri : emri,
 		description : kerkesat,
-		mesuesi : "Plotso",
+		mesuesi : "Mes1",
 		nxenesit : nxenesArr
 	};
 	conn.collection('detyras').insert(Detyra);
+
+	res.render('detyraSukses');
+});
+
+app.get('/plotesoDetyren', (req, res) => {
+	res.render('plotesoDetyren');
+});
+
+app.post('detyrePlotesuar', (req,res) => {
+	const detyra = req.body.detyra;
+	const file = req.body.file;
+	const Plotesim = {
+		detyra : detyra,
+		nxenesi: "Nx1",
+		plotesimi: file
+	};
+	conn.collection('plotesims').insert(Plotesim);
+
+	res.render('detyrePlotesuar');
 });
 
 port = 1234;
