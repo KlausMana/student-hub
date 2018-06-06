@@ -32,7 +32,6 @@ footer{
 
 .link1{
     padding-left: 170px;
-    color: black;
 }
 
 h3{
@@ -42,4 +41,8 @@ h3{
 
 .detyra-section{
     margin: 0px;
+}
+
+.photo1{
+    background: url("img/banner.png");
 }
