@@ -32,25 +32,33 @@ app.get('/loginNxenes', (req, res) => {
 	res.render('loginNxenes');
 });
 
-app.post('/mesuesDashboard', (req, res) => {
+app.post('/detyratMesues', (req, res) => {
 	let emerMesues = req.body.username;
 	Detyrat.find({"mesues" : emerMesues}).exec(function(err, detyra){
-		res.render('detyra_mesuesi', {
+		res.render('detyra_mesuesi.ejs', {
 			detyrat: detyra
 		});
 	});
 });
 
-app.post('/nxenesDashboard', (req, res) => {
+app.get('/mesuesDashboard'){
+	res.render('dashboardMesues.ejs');
+}
+
+app.post('/detyratNxenes', (req, res) => {
 	let idNxenes = req.body.username;
 
 	Detyrat.find({"nxenesit" : idNxenes}).exec( (err, detyra) => {
-		res.render('detyra_nxenesi', {
+		res.render('detyra_nxenesi.ejs', {
 			detyrat: detyra
 		});
 	});
 
 });
+
+app.get('/nxenesDashboard'){
+	res.render('dashboardNxenes.ejs');
+}
 
 app.get('/krijoDet', (req, res) => {
 	res.render('formMesues');
