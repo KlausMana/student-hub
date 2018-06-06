@@ -26,11 +26,20 @@ footer{
     padding-left: 300px;
 }
 
-.text-in-center1 :a{
-    color: #64b5f6;
+.text-in-center{
+    color: black;
 }
 
 .link1{
     padding-left: 170px;
-    color: white;
+    color: black;
+}
+
+h3{
+    margin: 0px;
+    padding: 20px;
+}
+
+.detyra-section{
+    margin: 0px;
 }
